@@ -46,6 +46,14 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* สไตล์ iframe */
+        .youtube-embed {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +71,11 @@
             <p id="player-list">Players: Loading...</p>
             <p id="uptime">Server Uptime: Loading...</p> <!-- เพิ่มส่วนแสดงเวลาเปิดเซิร์ฟเวอร์ -->
         </div>
+
+        <!-- เพิ่มวิดีโอ YouTube -->
+        <iframe class="youtube-embed" src="https://vdo.ninja/?view=ie7VQBu" title="YouTube video" allowfullscreen></iframe>
+        <!-- Replace YOUTUBE_VIDEO_ID with the actual ID of your YouTube video -->
+        
     </div>
 
     <footer>
@@ -75,7 +88,7 @@
             fetch('https://api.mcstatus.io/v2/status/java/later-snake.gl.joinmc.link')
                 .then(response => response.json())
                 .then(data => {
-                    // อัปเดตสถานะเซิร์ฟเวอร์
+                    // อัปเดตสถานะเซิฟเวอร์
                     const statusElement = document.getElementById("status");
                     const playersElement = document.getElementById("players");
                     const playerListElement = document.getElementById("player-list");
