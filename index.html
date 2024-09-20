@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panuwat.it.com - Minecraft Server</title>
+    <title>benharry12.github.io - Minecraft Server</title>
     <style>
         body {
             background-color: #2a5934;
@@ -50,22 +50,23 @@
 </head>
 <body>
     <header>
-        Panuwat.it.com - Minecraft Server
+        benharry12.github.io - Minecraft Server
     </header>
 
     <div class="container">
         <div class="server-status">
             <h1>สถานะเซิฟเวอร์</h1>
-            <p id="server">Server: 0.tcp.ap.ngrok.io:15817</p>
+            <p id="server">Server: later-snake.gl.joinmc.link</p>
             <p id="version">Version: Loading...</p>
             <p id="status">Status: <strong>Loading...</strong></p>
             <p id="players">Players Online: Loading...</p>
             <p id="player-list">Players: Loading...</p>
+            <p id="uptime">Server Uptime: Loading...</p> <!-- เพิ่มส่วนแสดงเวลาเปิดเซิร์ฟเวอร์ -->
         </div>
     </div>
 
     <footer>
-        &copy; 2024 Panuwat.it.com. All rights reserved.
+        &copy; 2024 benharry12.github.io. All rights reserved.
     </footer>
 
     <script>
@@ -79,11 +80,20 @@
                     const playersElement = document.getElementById("players");
                     const playerListElement = document.getElementById("player-list");
                     const versionElement = document.getElementById("version");
+                    const uptimeElement = document.getElementById("uptime");
 
                     if (data.online) {
                         statusElement.innerHTML = "Status: <strong>Online</strong>";
+
+                        // คำนวณเวลาเปิดเซิร์ฟเวอร์จากเวลาที่ได้จาก API
+                        const serverStartTime = new Date(data.retrieved_at); // เวลาเปิดเซิร์ฟเวอร์
+                        const currentTime = new Date(); // เวลาปัจจุบัน
+                        const uptimeInMilliseconds = currentTime - serverStartTime;
+                        const uptimeInHours = (uptimeInMilliseconds / (1000 * 60 * 60)).toFixed(2); // คำนวณเป็นชั่วโมง
+                        uptimeElement.innerHTML = `Server Uptime: ${uptimeInHours} hours`;
                     } else {
                         statusElement.innerHTML = "Status: <strong>Offline</strong>";
+                        uptimeElement.innerHTML = "Server Uptime: N/A";
                     }
 
                     // อัปเดตจำนวนผู้เล่น
