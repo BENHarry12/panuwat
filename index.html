@@ -3,76 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Panuwat.it.com - Minecraft Server</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #f57c00; color: white; padding: 20px; text-align: center; }
-        nav ul { list-style: none; padding: 0; text-align: center; }
-        nav ul li { display: inline-block; margin: 0 15px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
-        section { padding: 50px 20px; }
-        footer { background-color: #424242; color: white; text-align: center; padding: 10px 0; position: relative; bottom: 0; width: 100%; }
-        .content { max-width: 1200px; margin: auto; }
-        .hero { background-color: #ffcc80; padding: 50px; text-align: center; }
-        .hero h1 { color: #424242; }
-        .hero p { color: #424242; font-size: 1.2em; }
-        .card { background-color: #f5f5f5; border: 1px solid #ccc; padding: 20px; margin: 20px 0; border-radius: 10px; transition: transform 0.3s; }
-        .card:hover { transform: scale(1.05); }
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .btn { background-color: #f57c00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; }
-        .btn:hover { background-color: #ef6c00; }
+        body {
+            background-color: #2a5934;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1d3f2b;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            color: #a3d36c;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .server-status {
+            background-color: #1e5e36;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        h1 {
+            color: #a3d36c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1d3f2b;
+            color: #a3d36c;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        Panuwat.it.com - Minecraft Server
     </header>
 
-    <section id="hero" class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Showcasing my work and projects</p>
-    </section>
-
-    <section id="about" class="content">
-        <h2>About Me</h2>
-        <p>Hello! I am a [Your Name], a passionate [Your Job Title] with expertise in [Your Skills]. I enjoy creating solutions that are both functional and aesthetically pleasing.</p>
-    </section>
-
-    <section id="projects" class="content">
-        <h2>My Projects</h2>
-        <div class="projects">
-            <div class="card">
-                <h3>Project 1</h3>
-                <p>Description of project 1.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-            <div class="card">
-                <h3>Project 2</h3>
-                <p>Description of project 2.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-            <div class="card">
-                <h3>Project 3</h3>
-                <p>Description of project 3.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
+    <div class="container">
+        <div class="server-status">
+            <h1>สถานะเซิฟเวอร์</h1>
+            <p id="server">Server: later-snake.gl.joinmc.link</p>
+            <p id="version">Version: Loading...</p>
+            <p id="status">Status: <strong>Loading...</strong></p>
+            <p id="players">Players Online: Loading...</p>
+            <p id="player-list">Players: Loading...</p>
         </div>
-    </section>
-
-    <section id="contact" class="content">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out at <a href="mailto:youremail@example.com">youremail@example.com</a>.</p>
-    </section>
+    </div>
 
     <footer>
-        <p>&copy; 2024 My Portfolio | Designed with passion</p>
+        &copy; 2024 Panuwat.it.com. All rights reserved.
     </footer>
+
+    <script>
+        // ฟังก์ชันที่ดึงข้อมูลจาก API
+        function fetchServerData() {
+            fetch('https://api.mcstatus.io/v2/status/java/later-snake.gl.joinmc.link')
+                .then(response => response.json())
+                .then(data => {
+                    // อัปเดตสถานะเซิร์ฟเวอร์
+                    const statusElement = document.getElementById("status");
+                    const playersElement = document.getElementById("players");
+                    const playerListElement = document.getElementById("player-list");
+                    const versionElement = document.getElementById("version");
+
+                    if (data.online) {
+                        statusElement.innerHTML = "Status: <strong>Online</strong>";
+                    } else {
+                        statusElement.innerHTML = "Status: <strong>Offline</strong>";
+                    }
+
+                    // อัปเดตจำนวนผู้เล่น
+                    playersElement.innerHTML = `Players Online: ${data.players.online}/${data.players.max}`;
+
+                    // แสดงรายชื่อผู้เล่นที่ออนไลน์อยู่
+                    if (data.players.list.length > 0) {
+                        const playerNames = data.players.list.map(player => player.name_clean).join(", ");
+                        playerListElement.innerHTML = `Players: ${playerNames}`;
+                    } else {
+                        playerListElement.innerHTML = "Players: No players online.";
+                    }
+
+                    // อัปเดตเวอร์ชันเซิร์ฟเวอร์
+                    versionElement.innerHTML = `Version: ${data.version.name_clean}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching server data:', error);
+                });
+        }
+
+        // เรียกฟังก์ชัน fetchServerData ทุกๆ 0.5 วินาที (500 มิลลิวินาที)
+        setInterval(fetchServerData, 500);
+
+        // ดึงข้อมูลเมื่อหน้าเว็บโหลด
+        fetchServerData();
+    </script>
 </body>
 </html>
