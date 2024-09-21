@@ -1,61 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>benharry12.github.io - Minecraft Server</title>
     <style>
         body {
-            background-color: #2a5934;
+            background: linear-gradient(to bottom right, #2a5934, #1d3f2b);
             font-family: 'Arial', sans-serif;
             color: #fff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background-color: #1d3f2b;
+            background-color: rgba(29, 63, 43, 0.8);
             padding: 20px;
             text-align: center;
-            font-size: 2em;
+            font-size: 2.5em;
             color: #a3d36c;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid #a3d36c;
         }
 
         .container {
+            flex: 1;
             text-align: center;
             padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .server-status {
-            background-color: #1e5e36;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #000;
+            background: rgba(29, 63, 43, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            width: 90%;
+            max-width: 700px;
         }
 
         h1 {
             color: #a3d36c;
+            margin: 0;
+            font-size: 2em;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .status-online {
+            color: #4CAF50;
+        }
+
+        .status-offline {
+            color: #FF4444;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #1d3f2b;
+            padding: 15px;
+            background-color: rgba(29, 63, 43, 0.8);
             color: #a3d36c;
-            position: fixed;
-            bottom: 0;
+            position: relative;
             width: 100%;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* สไตล์ iframe */
         .youtube-embed {
             width: 100%;
             height: 400px;
             margin-top: 20px;
             border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 2em;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         benharry12.github.io - Minecraft Server
@@ -66,16 +111,14 @@
             <h1>สถานะเซิฟเวอร์</h1>
             <p id="server">Server: 0.tcp.ap.ngrok.io:15817</p>
             <p id="version">Version: Loading...</p>
-            <p id="status">Status: <strong>Loading...</strong></p>
+            <p id="status">Status: <strong class="status-loading">Loading...</strong></p>
             <p id="players">Players Online: Loading...</p>
             <p id="player-list">Players: Loading...</p>
-            <p id="uptime">Server Uptime: Loading...</p> <!-- เพิ่มส่วนแสดงเวลาเปิดเซิร์ฟเวอร์ -->
+            <p id="uptime">Server Uptime: Loading...</p>
         </div>
 
         <!-- เพิ่มวิดีโอ YouTube -->
         <iframe class="youtube-embed" src="https://vdo.ninja/?view=ie7VQBu" title="YouTube video" allowfullscreen></iframe>
-        <!-- Replace YOUTUBE_VIDEO_ID with the actual ID of your YouTube video -->
-        
     </div>
 
     <footer>
@@ -83,12 +126,10 @@
     </footer>
 
     <script>
-        // ฟังก์ชันที่ดึงข้อมูลจาก API
         function fetchServerData() {
             fetch('https://api.mcstatus.io/v2/status/java/later-snake.gl.joinmc.link')
                 .then(response => response.json())
                 .then(data => {
-                    // อัปเดตสถานะเซิฟเวอร์
                     const statusElement = document.getElementById("status");
                     const playersElement = document.getElementById("players");
                     const playerListElement = document.getElementById("player-list");
@@ -96,23 +137,19 @@
                     const uptimeElement = document.getElementById("uptime");
 
                     if (data.online) {
-                        statusElement.innerHTML = "Status: <strong>Online</strong>";
-
-                        // คำนวณเวลาเปิดเซิร์ฟเวอร์จากเวลาที่ได้จาก API
-                        const serverStartTime = new Date(data.retrieved_at); // เวลาเปิดเซิร์ฟเวอร์
-                        const currentTime = new Date(); // เวลาปัจจุบัน
+                        statusElement.innerHTML = "Status: <strong class='status-online'>Online</strong>";
+                        const serverStartTime = new Date(data.retrieved_at);
+                        const currentTime = new Date();
                         const uptimeInMilliseconds = currentTime - serverStartTime;
-                        const uptimeInHours = (uptimeInMilliseconds / (1000 * 60 * 60)).toFixed(2); // คำนวณเป็นชั่วโมง
+                        const uptimeInHours = (uptimeInMilliseconds / (1000 * 60 * 60)).toFixed(2);
                         uptimeElement.innerHTML = `Server Uptime: ${uptimeInHours} hours`;
                     } else {
-                        statusElement.innerHTML = "Status: <strong>Offline</strong>";
+                        statusElement.innerHTML = "Status: <strong class='status-offline'>Offline</strong>";
                         uptimeElement.innerHTML = "Server Uptime: N/A";
                     }
 
-                    // อัปเดตจำนวนผู้เล่น
                     playersElement.innerHTML = `Players Online: ${data.players.online}/${data.players.max}`;
 
-                    // แสดงรายชื่อผู้เล่นที่ออนไลน์อยู่
                     if (data.players.list.length > 0) {
                         const playerNames = data.players.list.map(player => player.name_clean).join(", ");
                         playerListElement.innerHTML = `Players: ${playerNames}`;
@@ -120,7 +157,6 @@
                         playerListElement.innerHTML = "Players: No players online.";
                     }
 
-                    // อัปเดตเวอร์ชันเซิร์ฟเวอร์
                     versionElement.innerHTML = `Version: ${data.version.name_clean}`;
                 })
                 .catch(error => {
@@ -128,11 +164,9 @@
                 });
         }
 
-        // เรียกฟังก์ชัน fetchServerData ทุกๆ 0.5 วินาที (500 มิลลิวินาที)
         setInterval(fetchServerData, 500);
-
-        // ดึงข้อมูลเมื่อหน้าเว็บโหลด
         fetchServerData();
     </script>
 </body>
+
 </html>
