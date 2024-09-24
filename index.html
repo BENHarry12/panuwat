@@ -108,6 +108,21 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
+        .server-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgba(43, 175, 68, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .server-link:hover {
+            background-color: rgba(43, 175, 68, 1);
+        }
+
         @media (max-width: 768px) {
             header {
                 font-size: 2em;
@@ -133,7 +148,7 @@
     <div class="container">
         <div class="server-status">
             <h1>สถานะเซิฟเวอร์</h1>
-            <p id="server">Server: later-snake.gl.joinmc.link</p>
+            <p id="server">Server: panuwat.localto.net:4018</p>
             <p id="version">Version: Loading...</p>
             <p id="status">Status: <strong class="status-loading">Loading...</strong></p>
             <p id="players">Players Online: Loading...</p>
@@ -142,15 +157,14 @@
         </div>
 
         <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">Minecraft PC (สำหรับคอม):<br>
-            <strong>bpskbny.localto.net:9701</strong><br>
-            ถ้าเข้าไม่ได้:<br>
-            <strong>panuwat.localto.net:4018 เเละ later-snake.gl.joinmc.link</strong>
+            <strong>panuwat.localto.net:4018</strong>
         </p>
 
         <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">Minecraft PE (สำหรับโทรศัพท์):<br>
             Server Name: <strong>อะไรก็ได้</strong><br>
             Server Address: <strong>college-pins.gl.at.ply.gg</strong><br>
-            Port: <strong>3497</strong>
+            Port: <strong>3497</strong><br>
+            <a href="minecraft://college-pins.gl.at.ply.gg:3497" class="server-link">คลิกเพื่อเข้าเล่น</a>
         </p>
 
         <iframe class="youtube-embed" src="https://vdo.ninja/?view=ie7VQBu" title="YouTube video" allowfullscreen></iframe>
@@ -169,7 +183,7 @@
 
     <script>
         function fetchServerData() {
-            fetch('https://api.mcstatus.io/v2/status/java/later-snake.gl.joinmc.link')
+            fetch('https://api.mcstatus.io/v2/status/java/panuwat.localto.net:4018')
                 .then(response => response.json())
                 .then(data => {
                     const statusElement = document.getElementById("status");
