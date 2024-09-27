@@ -123,6 +123,16 @@
             background-color: rgba(43, 175, 68, 1);
         }
 
+        .how-to-play {
+            background: rgba(29, 63, 43, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin-top: 30px;
+            width: 90%;
+            max-width: 700px;
+        }
+
         @media (max-width: 768px) {
             header {
                 font-size: 2em;
@@ -171,7 +181,22 @@
 
         <iframe class="youtube-embed" src="https://vdo.ninja/?view=ie7VQBu" title="YouTube video" allowfullscreen></iframe>
 
-        <!-- ลิงก์ใหม่ที่เพิ่ม -->
+        <!-- วิธีการเล่น -->
+        <div class="how-to-play">
+            <h2 style="color: #a3d36c;">วิธีการเล่น</h2>
+            <p style="font-size: 1.2em; margin: 10px 0;">
+                ใช้คำสั่งต่อไปนี้เพื่อช่วยในการเล่น:
+            </p>
+            <ul style="list-style-type: none; padding: 0; color: #fff;">
+                <li><strong>/gwarp set [ชื่อที่เราจะตั้งพิกัด]</strong> - ตั้งพิกัดใหม่</li>
+                <li><strong>/gwarp [ชื่อที่เราตั้งพิกัด]</strong> - ย้ายไปยังพิกัดที่ตั้งไว้</li>
+                <li><strong>/sethome [ชื่อเรา]</strong> - ตั้งพิกัดบ้าน</li>
+                <li><strong>/home [ชื่อเรา]</strong> - กลับบ้านที่ตั้งไว้</li>
+                <li><strong>/skin random</strong> - เปลี่ยนสกินสุ่ม</li>
+                <li><strong>/chestlock add @a</strong> - คลิกที่กล่องเพื่อให้เพื่อนใช้งานกล่องของคุณได้</li>
+            </ul>
+        </div>
+
         <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">
             <a href="https://panuwatsh.localto.net/" target="_blank" style="color: #a3d36c; text-decoration: none;">
                 อัพไฟล์ลง SERVER
@@ -194,36 +219,21 @@
                     const versionElement = document.getElementById("version");
                     const uptimeElement = document.getElementById("uptime");
 
-                    if (data.online) {
-                        statusElement.innerHTML = "Status: <strong class='status-online'>Online</strong>";
-                        const serverStartTime = new Date(data.retrieved_at);
-                        const currentTime = new Date();
-                        const uptimeInMilliseconds = currentTime - serverStartTime;
-                        const uptimeInHours = (uptimeInMilliseconds / (1000 * 60 * 60)).toFixed(2);
-                        uptimeElement.innerHTML = `Server Uptime: ${uptimeInHours} hours`;
-                    } else {
-                        statusElement.innerHTML = "Status: <strong class='status-offline'>Offline</strong>";
-                        uptimeElement.innerHTML = "Server Uptime: N/A";
-                    }
-
-                    playersElement.innerHTML = `Players Online: ${data.players.online}/${data.players.max}`;
-
-                    if (data.players.list.length > 0) {
-                        const playerNames = data.players.list.map(player => player.name_clean).join(", ");
-                        playerListElement.innerHTML = `Players: ${playerNames}`;
-                    } else {
-                        playerListElement.innerHTML = "Players: No players online.";
-                    }
-
-                    versionElement.innerHTML = `Version: ${data.version.name_clean}`;
+                    statusElement.innerHTML = `Status: <strong class="status-${data.online ? 'online' : 'offline'}">${data.online ? 'Online' : 'Offline'}</strong>`;
+                    playersElement.innerHTML = `Players Online: ${data.players.online}`;
+                    playerListElement.innerHTML = `Players: ${data.players.list.join(', ') || 'None'}`;
+                    versionElement.innerHTML = `Version: ${data.version.name}`;
+                    uptimeElement.innerHTML = `Server Uptime: ${data.uptime || 'Loading...'}`;
                 })
                 .catch(error => {
                     console.error('Error fetching server data:', error);
+                    const statusElement = document.getElementById("status");
+                    statusElement.innerHTML = 'Status: <strong class="status-offline">Offline</strong>';
                 });
         }
 
-        setInterval(fetchServerData, 500);
         fetchServerData();
+        setInterval(fetchServerData, 60000); // Refresh data every 60 seconds
     </script>
 </body>
 
