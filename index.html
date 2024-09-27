@@ -1,242 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>benharry12.github.io - Minecraft Server</title>
-    <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/IMG_076653e98b38560f08f3.jpeg" type="image/jpeg">
+    <title>Panuwat Minecraft Server Status</title>
     <style>
         body {
-            background: linear-gradient(to bottom right, #2a5934, #1d3f2b);
             font-family: 'Arial', sans-serif;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: rgba(29, 63, 43, 0.8);
+            background-color: #2c3e50; /* เปลี่ยนพื้นหลังเป็นสีเทาเข้ม */
+            color: #ecf0f1;
+            text-align: center;
             padding: 20px;
-            text-align: center;
-            font-size: 2.5em;
-            color: #a3d36c;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            border-bottom: 5px solid #a3d36c;
-            position: relative;
         }
-
-        .home-button {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .home-button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
-
-        .container {
-            flex: 1;
-            text-align: center;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .server-status {
-            background: rgba(29, 63, 43, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-            width: 90%;
-            max-width: 700px;
-        }
-
         h1 {
-            color: #a3d36c;
-            margin: 0;
-            font-size: 2em;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            color: #27ae60; /* สีเขียวสำหรับหัวเรื่อง */
         }
-
-        p {
-            margin: 10px 0;
-            font-size: 1.2em;
-        }
-
-        .status-online {
-            color: #4CAF50;
-        }
-
-        .status-offline {
-            color: #FF4444;
-        }
-
-        footer {
-            text-align: center;
+        .server-info {
+            margin: 20px 0;
+            background-color: #1abc9c; /* สีเขียวเข้มสำหรับกล่องข้อมูลเซิร์ฟเวอร์ */
             padding: 15px;
-            background-color: rgba(29, 63, 43, 0.8);
-            color: #a3d36c;
-            position: relative;
-            width: 100%;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .youtube-embed {
-            width: 100%;
-            height: 400px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .server-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgba(43, 175, 68, 0.8);
             border-radius: 10px;
-            color: #fff;
-            text-decoration: none;
-            margin-top: 10px;
-            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .command-list {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        .command-list pre {
+            background-color: #16a085; /* สีเขียวสำหรับกล่องคำสั่ง */
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
         }
 
-        .server-link:hover {
-            background-color: rgba(43, 175, 68, 1);
-        }
-
-        .how-to-play {
-            background: rgba(29, 63, 43, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            margin-top: 30px;
-            width: 90%;
-            max-width: 700px;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                font-size: 2em;
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
             }
-
-            h1 {
-                font-size: 1.5em;
+            .server-info {
+                padding: 10px;
             }
-
-            p {
-                font-size: 1em;
+            .command-list {
+                max-width: 90%; /* เพิ่มความกว้างกล่องคำสั่งให้เหมาะกับมือถือ */
             }
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <a class="home-button" href="https://benharry12.github.io/" target="_self">HOME</a>
-        PANUWAT - Minecraft Server
-    </header>
-
-    <div class="container">
-        <div class="server-status">
-            <h1>สถานะเซิฟเวอร์</h1>
-            <p id="server">Server: panuwat.online</p>
-            <p id="version">Version: Loading...</p>
-            <p id="status">Status: <strong class="status-loading">Loading...</strong></p>
-            <p id="players">Players Online: Loading...</p>
-            <p id="player-list">Players: Loading...</p>
-            <p id="uptime">Server Uptime: Loading...</p>
-        </div>
-
-        <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">Minecraft PC (สำหรับคอม):<br>
-            <strong>panuwat.localto.net:4018 (ปิง) </strong><br>
-            <strong>mc-panu.minecraft.party (ไม่ปิง) </strong><br>
-            <strong>panuwat.online (อันนี้ดีสุด)</strong>
-        </p>
-
-        <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">Minecraft PE (สำหรับโทรศัพท์):<br>
-            Server Name: <strong>อะไรก็ได้</strong><br>
-            Server Address: <strong>panuwat.minecraft.party</strong><br>
-            Port: <strong>3497</strong><br>
-            <a href="minecraft://college-pins.gl.at.ply.gg:3497" class="server-link">คลิกเพื่อเข้าเล่น</a>
-        </p>
-
-        <iframe class="youtube-embed" src="https://vdo.ninja/?view=ie7VQBu" title="YouTube video" allowfullscreen></iframe>
-
-        <!-- วิธีการเล่น -->
-        <div class="how-to-play">
-            <h2 style="color: #a3d36c;">วิธีการเล่น</h2>
-            <p style="font-size: 1.2em; margin: 10px 0;">
-                ใช้คำสั่งต่อไปนี้เพื่อช่วยในการเล่น:
-            </p>
-            <ul style="list-style-type: none; padding: 0; color: #fff;">
-                <li><strong>/gwarp set [ชื่อที่เราจะตั้งพิกัด]</strong> - ตั้งพิกัดใหม่</li>
-                <li><strong>/gwarp [ชื่อที่เราตั้งพิกัด]</strong> - ย้ายไปยังพิกัดที่ตั้งไว้</li>
-                <li><strong>/sethome [ชื่อเรา]</strong> - ตั้งพิกัดบ้าน</li>
-                <li><strong>/home [ชื่อเรา]</strong> - กลับบ้านที่ตั้งไว้</li>
-                <li><strong>/skin random</strong> - เปลี่ยนสกินสุ่ม</li>
-                <li><strong>/chestlock add @a</strong> - คลิกที่กล่องเพื่อให้เพื่อนใช้งานกล่องของคุณได้</li>
-            </ul>
-        </div>
-
-        <p style="font-size: 1.5em; margin: 20px 0; color: #a3d36c;">
-            <a href="https://panuwatsh.localto.net/" target="_blank" style="color: #a3d36c; text-decoration: none;">
-                อัพไฟล์ลง SERVER
-            </a>
-        </p>
+    <h1>PANUWAT - Minecraft Server</h1>
+    <div class="server-info">
+        <h2>ข้อมูลเซิร์ฟเวอร์</h2>
+        <p><strong>Minecraft PC:</strong> <a href="http://panuwat.online" style="color: #fff;">panuwat.online</a></p>
+        <p><strong>Minecraft PE:</strong> Server Address: panuwat.minecraft.party<br>Port: 3497</p>
+        <p><strong>สถานะ:</strong> <span id="server-status">Loading...</span></p>
+        <p><strong>ผู้เล่นออนไลน์:</strong> <span id="online-players">0</span>/<span id="max-players">0</span></p>
+    </div>
+    
+    <h2>วิธีการเล่น</h2>
+    <div class="command-list">
+        <pre>
+/gwarp set [ชื่อที่เราจะตั้งพิกัด] - ตั้งพิกัดใหม่
+/gwarp [ชื่อที่เราตั้งพิกัด] - ย้ายไปยังพิกัดที่ตั้งไว้
+/sethome [ชื่อเรา] - ตั้งพิกัดบ้าน
+/home [ชื่อเรา] - กลับบ้านที่ตั้งไว้
+/skin random - เปลี่ยนสกินสุ่ม
+/chestlock add @a - คลิกที่กล่องเพื่อให้เพื่อนใช้งานกล่องของคุณได้
+        </pre>
     </div>
 
-    <footer>
-        &copy; 2024 benharry12.github.io. All rights reserved.
-    </footer>
-
     <script>
-        function fetchServerData() {
-            fetch('https://api.mcstatus.io/v2/status/java/panuwat.online:25565')
-                .then(response => response.json())
-                .then(data => {
-                    const statusElement = document.getElementById("status");
-                    const playersElement = document.getElementById("players");
-                    const playerListElement = document.getElementById("player-list");
-                    const versionElement = document.getElementById("version");
-                    const uptimeElement = document.getElementById("uptime");
+        const apiResponse = {
+            "online": true,
+            "host": "panuwat.online",
+            "port": 25565,
+            "ip_address": "209.25.142.16",
+            "players": {
+                "online": 2,
+                "max": 50,
+                "list": [
+                    { "name_clean": "mixChiyabo" },
+                    { "name_clean": "BXOSAAA" }
+                ]
+            },
+            "motd": {
+                "clean": "PANUWAT_SERVER"
+            }
+        };
 
-                    document.getElementById("server").textContent = `Server: ${data.server.host}`;
+        document.getElementById('server-status').textContent = apiResponse.online ? "ออนไลน์" : "ออฟไลน์";
+        document.getElementById('online-players').textContent = apiResponse.players.online;
+        document.getElementById('max-players').textContent = apiResponse.players.max;
 
-                    versionElement.textContent = `Version: ${data.server.version.name}`;
-                    statusElement.textContent = `Status: ${data.online ? 'Online' : 'Offline'}`;
-                    statusElement.className = data.online ? 'status-online' : 'status-offline';
-                    playersElement.textContent = `Players Online: ${data.players.online}`;
-                    playerListElement.textContent = `Players: ${data.players.list.join(', ')}`;
-                    uptimeElement.textContent = `Server Uptime: ${data.server.uptime}`;
-                })
-                .catch(error => {
-                    console.error('Error fetching server status:', error);
-                    document.getElementById("status").textContent = 'Status: Error fetching data';
-                });
+        // Optional: Display the player names
+        if (apiResponse.players.list.length > 0) {
+            const playerNames = apiResponse.players.list.map(player => player.name_clean).join(', ');
+            document.getElementById('online-players').textContent += ` (${playerNames})`;
         }
-
-        fetchServerData();
-        setInterval(fetchServerData, 30000); // Refresh every 30 seconds
     </script>
 </body>
-
 </html>
