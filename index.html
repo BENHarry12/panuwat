@@ -210,7 +210,7 @@
 
     <script>
         function fetchServerData() {
-            fetch('https://api.mcstatus.io/v2/status/java/panuwat.localto.net:4018')
+            fetch('https://api.mcstatus.io/v2/status/java/panuwat.online:25565')
                 .then(response => response.json())
                 .then(data => {
                     const statusElement = document.getElementById("status");
@@ -219,21 +219,23 @@
                     const versionElement = document.getElementById("version");
                     const uptimeElement = document.getElementById("uptime");
 
-                    statusElement.innerHTML = `Status: <strong class="status-${data.online ? 'online' : 'offline'}">${data.online ? 'Online' : 'Offline'}</strong>`;
-                    playersElement.innerHTML = `Players Online: ${data.players.online}`;
-                    playerListElement.innerHTML = `Players: ${data.players.list.join(', ') || 'None'}`;
-                    versionElement.innerHTML = `Version: ${data.version.name}`;
-                    uptimeElement.innerHTML = `Server Uptime: ${data.uptime || 'Loading...'}`;
+                    document.getElementById("server").textContent = `Server: ${data.server.host}`;
+
+                    versionElement.textContent = `Version: ${data.server.version.name}`;
+                    statusElement.textContent = `Status: ${data.online ? 'Online' : 'Offline'}`;
+                    statusElement.className = data.online ? 'status-online' : 'status-offline';
+                    playersElement.textContent = `Players Online: ${data.players.online}`;
+                    playerListElement.textContent = `Players: ${data.players.list.join(', ')}`;
+                    uptimeElement.textContent = `Server Uptime: ${data.server.uptime}`;
                 })
                 .catch(error => {
-                    console.error('Error fetching server data:', error);
-                    const statusElement = document.getElementById("status");
-                    statusElement.innerHTML = 'Status: <strong class="status-offline">Offline</strong>';
+                    console.error('Error fetching server status:', error);
+                    document.getElementById("status").textContent = 'Status: Error fetching data';
                 });
         }
 
         fetchServerData();
-        setInterval(fetchServerData, 60000); // Refresh data every 60 seconds
+        setInterval(fetchServerData, 30000); // Refresh every 30 seconds
     </script>
 </body>
 
