@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>PANUWAT BOOST - RAM & GPU Performance</title>
+    <title>BOOSTER INPUTLAG+ FPS+</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -30,14 +30,14 @@
         }
         .header h1 {
             font-size: 3rem;
-            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            background: linear-gradient(90deg, #ff4d4d, #00bcd4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
         }
         .download-section {
             background: rgba(17, 34, 64, 0.7);
-            border: 2px solid #64ffda;
+            border: 2px solid #ff4d4d;
             border-radius: 10px;
             padding: 20px;
             margin: 15px 0;
@@ -48,102 +48,92 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
         .download-section:hover {
             transform: scale(1.05) translateZ(50px);
-            box-shadow: 0 0 25px rgba(100, 255, 218, 0.4);
+            box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
         }
         .download-section a {
-            color: #64ffda;
+            color: #ff4d4d;
             text-decoration: none;
             display: block;
-            text-align: center;
             font-size: 1.2rem;
             transition: all 0.3s ease;
             margin-top: 10px;
+            border: 1px solid #ff4d4d;
+            padding: 10px;
+            border-radius: 5px;
         }
         .download-section a:hover {
             transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.7);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateZ(50px); }
-            50% { transform: translateY(-15px) translateZ(70px); }
-        }
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        .grid-line {
-            position: absolute;
-            background: linear-gradient(to right, transparent, #64ffda, transparent);
-            height: 1px;
-            width: 100%;
-            animation: move-line 5s linear infinite;
-        }
-        @keyframes move-line {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
         }
         .tool-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #00bcd4, #64ffda);
+            background: linear-gradient(135deg, #ff4d4d, #00bcd4);
             border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 10px;
-            box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+            font-size: 40px;
+        }
+        .performance-badge {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .download-section:hover .performance-badge {
+            animation: pulse 0.5s infinite;
         }
     </style>
 </head>
 <body>
-    <div class="grid-background">
-        <div class="grid-line" style="top: 10%;"></div>
-        <div class="grid-line" style="top: 30%;"></div>
-        <div class="grid-line" style="top: 50%;"></div>
-        <div class="grid-line" style="top: 70%;"></div>
-        <div class="grid-line" style="top: 90%;"></div>
-    </div>
     <div class="container">
         <div class="header">
-            <h1>PANUWAT BOOST</h1>
-            <p>เครื่องมือเพิ่มประสิทธิภาพ RAM & GPU</p>
+            <h1>BOOSTER INPUTLAG+ FPS+</h1>
+            <p>เครื่องมือเพิ่มประสิทธิภาพเกมสูงสุด</p>
         </div>
 
         <div class="download-section">
             <div class="tool-icon">🚀</div>
+            <div class="performance-badge">GPU OPTIMIZE</div>
             <h2>GPU BOOST</h2>
             <a href="https://www.mediafire.com/file/xkfangjmafc6r7q/Disble+idle+GPU+&+Lower+Priority.rar/file">
-                ดาวน์โหลด GPU BOOST
+                ดาวน์โหลดตัวเพิ่มประสิทธิภาพ GPU
             </a>
         </div>
 
         <div class="download-section">
             <div class="tool-icon">💻</div>
+            <div class="performance-badge">SYSTEM TWEAK</div>
             <h2>BOOSTER.bat</h2>
             <a href="https://www.mediafire.com/file/jhszu524dqme92x/%25E0%25B9%2584%25E0%25B8%259B%25E0%25B8%25AB%25E0%25B8%25B2%25E0%25B8%25A1%25E0%25B8%25B2%25E0%25B9%2583%25E0%25B8%25AB%25E0%25B9%2589.bat/file">
-                ดาวน์โหลด BOOSTER.bat
+                ดาวน์โหลดสคริปต์ปรับแต่งระบบ
             </a>
         </div>
 
         <div class="download-section">
             <div class="tool-icon">🧹</div>
+            <div class="performance-badge">RAM CLEAN</div>
             <h2>Clear RAM</h2>
             <a href="https://memreduct.org/files/memreduct-3.5.1-setup.exe">
-                ดาวน์โหลด Memory Reduct
+                ดาวน์โหลดเครื่องมือล้าง RAM
             </a>
         </div>
 
         <footer>
-            <p style="color: #64ffda; text-align: center; opacity: 0.7;">
+            <p style="color: #ff4d4d; text-align: center; opacity: 0.7;">
                 คำเตือน: โปรดระมัดระวังในการดาวน์โหลดและใช้งานสคริปต์
             </p>
         </footer>
