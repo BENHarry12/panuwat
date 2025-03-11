@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>PANUWAT BOOST - GPU PERFORMANCE</title>
+    <title>PANUWAT BOOST - RAM & GPU Performance</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -45,6 +45,9 @@
             max-width: 500px;
             transition: all 0.3s ease;
             transform: translateZ(30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .download-section:hover {
             transform: scale(1.05) translateZ(50px);
@@ -57,6 +60,7 @@
             text-align: center;
             font-size: 1.2rem;
             transition: all 0.3s ease;
+            margin-top: 10px;
         }
         .download-section a:hover {
             transform: scale(1.1);
@@ -87,6 +91,17 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00bcd4, #64ffda);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -100,10 +115,11 @@
     <div class="container">
         <div class="header">
             <h1>PANUWAT BOOST</h1>
-            <p>เครื่องมือเพิ่มประสิทธิภาพ GPU แห่งอนาคต</p>
+            <p>เครื่องมือเพิ่มประสิทธิภาพ RAM & GPU</p>
         </div>
 
         <div class="download-section">
+            <div class="tool-icon">🚀</div>
             <h2>GPU BOOST</h2>
             <a href="https://www.mediafire.com/file/xkfangjmafc6r7q/Disble+idle+GPU+&+Lower+Priority.rar/file">
                 ดาวน์โหลด GPU BOOST
@@ -111,9 +127,18 @@
         </div>
 
         <div class="download-section">
+            <div class="tool-icon">💻</div>
             <h2>BOOSTER.bat</h2>
             <a href="https://www.mediafire.com/file/jhszu524dqme92x/%25E0%25B9%2584%25E0%25B8%259B%25E0%25B8%25AB%25E0%25B8%25B2%25E0%25B8%25A1%25E0%25B8%25B2%25E0%25B9%2583%25E0%25B8%25AB%25E0%25B9%2589.bat/file">
                 ดาวน์โหลด BOOSTER.bat
+            </a>
+        </div>
+
+        <div class="download-section">
+            <div class="tool-icon">🧹</div>
+            <h2>Clear RAM</h2>
+            <a href="https://memreduct.org/files/memreduct-3.5.1-setup.exe">
+                ดาวน์โหลด Memory Reduct
             </a>
         </div>
 
