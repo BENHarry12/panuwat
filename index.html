@@ -42,7 +42,7 @@
             padding: 20px;
             margin: 15px 0;
             width: 80%;
-            max-width: 500px;
+            max-width: 600px;
             transition: all 0.3s ease;
             transform: translateZ(30px);
             display: flex;
@@ -64,6 +64,7 @@
             border: 1px solid #ff4d4d;
             padding: 10px;
             border-radius: 5px;
+            width: 100%;
         }
         .download-section a:hover {
             transform: scale(1.1);
@@ -89,12 +90,32 @@
             font-size: 0.8rem;
             margin-bottom: 10px;
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .features-list {
+            background-color: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            width: 100%;
+            text-align: left;
         }
-        .download-section:hover .performance-badge {
-            animation: pulse 0.5s infinite;
+        .features-list h3 {
+            color: #ff4d4d;
+            margin-bottom: 10px;
+        }
+        .features-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features-list li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .features-list li:before {
+            content: '✓';
+            color: #00bcd4;
+            position: absolute;
+            left: 0;
         }
     </style>
 </head>
@@ -103,6 +124,32 @@
         <div class="header">
             <h1>BOOSTER INPUTLAG+ FPS+</h1>
             <p>เครื่องมือเพิ่มประสิทธิภาพเกมสูงสุด</p>
+        </div>
+
+        <div class="download-section">
+            <div class="tool-icon">🚀</div>
+            <div class="performance-badge">ULTIMATE OPTIMIZATION</div>
+            <h2>PANUWAT BAT BOOSTER</h2>
+            <a href="https://www.mediafire.com/file/2h4869s1eu73uop/PANUWAT_BAT.bat/file">
+                ดาวน์โหลดสคริปต์ปรับแต่งระบบ
+            </a>
+
+            <div class="features-list">
+                <h3>คุณสมบัติการเพิ่มประสิทธิภาพ:</h3>
+                <ul>
+                    <li>ปรับแต่ง GPU Idle ให้มีประสิทธิภาพสูงสุด</li>
+                    <li>เพิ่มประสิทธิภาพการ์ดจอ NVIDIA</li>
+                    <li>ปรับการตั้งค่าพลังงานเพื่อประสิทธิภาพสูง</li>
+                    <li>ล้างไฟล์ Temporary และ Prefetch</li>
+                    <li>ปิดบริการที่ไม่จำเป็น (Windows Search, Superfetch)</li>
+                    <li>เพิ่มความสำคัญการ์ดจอสูงสุด</li>
+                    <li>ล้าง DNS Cache</li>
+                    <li>ปิดการใช้งาน Game DVR</li>
+                    <li>เพิ่มประสิทธิภาพหน่วยความจำ</li>
+                    <li>ปรับการตั้งค่า NVIDIA Control Panel</li>
+                    <li>เพิ่มเสถียรภาพระบบ</li>
+                </ul>
+            </div>
         </div>
 
         <div class="download-section">
@@ -135,6 +182,7 @@
         <footer>
             <p style="color: #ff4d4d; text-align: center; opacity: 0.7;">
                 คำเตือน: โปรดระมัดระวังในการดาวน์โหลดและใช้งานสคริปต์
+                ควรสำรองข้อมูลก่อนใช้งานเสมอ
             </p>
         </footer>
     </div>
