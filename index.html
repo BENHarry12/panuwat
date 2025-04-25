@@ -2,189 +2,158 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>BOOSTER INPUTLAG+ FPS+</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ห้างหุ้นส่วนจำกัด ส.สเตนเลส แอนด์ พาร์ท</title>
     <style>
-        body, html {
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary-purple: #6a0dad;
+            --light-purple: #9c27b0;
+            --background-purple: #f3e5f5;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #0a192f, #112240);
-            color: #e6f1ff;
-            font-family: 'Orbitron', sans-serif;
-            overflow-x: hidden;
-        }
-        .container {
-            perspective: 1000px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
             box-sizing: border-box;
         }
-        .header {
-            text-align: center;
-            transform: translateZ(50px);
-            animation: float 3s infinite ease-in-out;
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--background-purple);
+            color: #333;
+            line-height: 1.6;
         }
-        .header h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, #ff4d4d, #00bcd4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
-        }
-        .download-section {
-            background: rgba(17, 34, 64, 0.7);
-            border: 2px solid #ff4d4d;
-            border-radius: 10px;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            margin: 15px 0;
-            width: 80%;
-            max-width: 600px;
-            transition: all 0.3s ease;
-            transform: translateZ(30px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            background-color: rgba(106, 13, 173, 0.9);
+            padding: 15px 0;
             text-align: center;
         }
-        .download-section:hover {
-            transform: scale(1.05) translateZ(50px);
-            box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
-        }
-        .download-section a {
-            color: #ff4d4d;
+        
+        nav a {
+            color: white;
             text-decoration: none;
-            display: block;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            border: 1px solid #ff4d4d;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        .download-section a:hover {
-            transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
+        
+        nav a:hover {
+            color: #ffeb3b;
         }
-        .tool-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ff4d4d, #00bcd4);
-            border-radius: 20px;
+        
+        .content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .social-media {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
-            font-size: 40px;
+            margin-top: 20px;
         }
-        .performance-badge {
-            background-color: #ff4d4d;
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
         }
-        .features-list {
-            background-color: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-            width: 100%;
-            text-align: left;
-        }
-        .features-list h3 {
-            color: #ff4d4d;
-            margin-bottom: 10px;
-        }
-        .features-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .features-list li {
-            margin-bottom: 5px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .features-list li:before {
-            content: '✓';
-            color: #00bcd4;
-            position: absolute;
-            left: 0;
+        
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+            }
+            
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>ห้างหุ้นส่วนจำกัด ส.สเตนเลส แอนด์ พาร์ท</h1>
+        <p>ผู้เชี่ยวชาญการผลิตและแปรรูปสแตนเลสครบวงจร</p>
+    </header>
+
+    <nav>
+        <a href="#">หน้าแรก</a>
+        <a href="#">เกี่ยวกับเรา</a>
+        <a href="#">ผลิตภัณฑ์</a>
+        <a href="#">บริการ</a>
+        <a href="#">ติดต่อ</a>
+    </nav>
+
     <div class="container">
-        <div class="header">
-            <h1>BOOSTER INPUTLAG+ FPS+</h1>
-            <p>เครื่องมือเพิ่มประสิทธิภาพเกมสูงสุด</p>
+        <div class="content">
+            <h2>เกี่ยวกับโรงงาน</h2>
+            <p>ส.สเตนเลส แอนด์ พาร์ท เป็นโรงงานชั้นนำในการผลิตและแปรรูปผลิตภัณฑ์สแตนเลสที่มีคุณภาพสูง ด้วยประสบการณ์และความเชี่ยวชาญมากกว่า 10 ปี</p>
+            
+            <h3>บริการของเรา</h3>
+            <ul>
+                <li>ผลิตชิ้นส่วนสแตนเลสตามแบบ</li>
+                <li>แปรรูปโลหะสแตนเลสครบวงจร</li>
+                <li>ออกแบบและผลิตตามความต้องการเฉพาะ</li>
+            </ul>
         </div>
 
-        <div class="download-section">
-            <div class="tool-icon">🚀</div>
-            <div class="performance-badge">ULTIMATE OPTIMIZATION</div>
-            <h2>PANUWAT BAT BOOSTER</h2>
-            <a href="https://download1078.mediafire.com/oqmteg3nf8ugPgQgdoZkkqPDS6U5fXbO2RixL-ZUPmM7XKOk7ybMjuYt-QOBhPkBI5GHoIUrH4OAuXc-tKyAfmGPF2HepJRY6DCgnlP0sgM9ie6uwQd3xVMRWnXqAzSHwPLZ1Nd9vLZX5sG1-dpsl2oE7DS-SViFXgPOxHpo_NM/2h4869s1eu73uop/PANUWAT_BAT.bat">
-                ดาวน์โหลดสคริปต์ปรับแต่งระบบ
-            </a>
-
-            <div class="features-list">
-                <h3>คุณสมบัติการเพิ่มประสิทธิภาพ:</h3>
-                <ul>
-                    <li>ปรับแต่ง GPU Idle ให้มีประสิทธิภาพสูงสุด</li>
-                    <li>เพิ่มประสิทธิภาพการ์ดจอ NVIDIA</li>
-                    <li>ปรับการตั้งค่าพลังงานเพื่อประสิทธิภาพสูง</li>
-                    <li>ล้างไฟล์ Temporary และ Prefetch</li>
-                    <li>ปิดบริการที่ไม่จำเป็น (Windows Search, Superfetch)</li>
-                    <li>เพิ่มความสำคัญการ์ดจอสูงสุด</li>
-                    <li>ล้าง DNS Cache</li>
-                    <li>ปิดการใช้งาน Game DVR</li>
-                    <li>เพิ่มประสิทธิภาพหน่วยความจำ</li>
-                    <li>ปรับการตั้งค่า NVIDIA Control Panel</li>
-                    <li>เพิ่มเสถียรภาพระบบ</li>
-                </ul>
+        <div class="contact-section">
+            <div>
+                <h3>ติดต่อเรา</h3>
+                <p>📞 โทร: 089-697-1068</p>
+                <p>✉️ อีเมล: well_data@hotmail.com</p>
+            </div>
+            <div>
+                <h3>ติดตามเรา</h3>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/profile.php?id=61575671002737" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="50" height="50">
+                    </a>
+                </div>
             </div>
         </div>
-
-        <div class="download-section">
-            <div class="tool-icon">🚀</div>
-            <div class="performance-badge">GPU OPTIMIZE</div>
-            <h2>GPU BOOST</h2>
-            <a href="https://download1324.mediafire.com/zzd607q0uhmgYPQjNmQzScJ-6f2cxvQrk0q8fArME852Ev1uQmlC7niVz5AQPogLV75Kf1DqefYyHicyW8e8hU44-90zCIUOhVSTOm_R74rSfGjj3vNexNVC760tSV43ty47686m1tEYGDL9Vz6-N_ewu0EG90T6GvduYrwtwYg/xkfangjmafc6r7q/Disble+idle+GPU+%26+Lower+Priority.rar">
-                ดาวน์โหลดตัวเพิ่มประสิทธิภาพ GPU
-            </a>
-        </div>
-
-        <div class="download-section">
-            <div class="tool-icon">💻</div>
-            <div class="performance-badge">SYSTEM TWEAK</div>
-            <h2>BOOSTER.bat</h2>
-            <a href="https://download944.mediafire.com/criqw2mvpuggiWj7DwcvSBZJVHHAs1_G_v7BOzgh6cD8a64Z0kqHVWtkvL8iIBY5A7NvmfX4jzXiiXEIoSfGJvsgE4QOPSdAWpKb-Hk10hIPvwyKZo1eqNUH0HXudvBnWlPWE1rDdeGAvx4bQrvXXxJVjQJGypnVNPsmH-gVu-k/jhszu524dqme92x/%E0%B9%84%E0%B8%9B%E0%B8%AB%E0%B8%B2%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B9%89.bat">
-                ดาวน์โหลดสคริปต์ปรับแต่งระบบ
-            </a>
-        </div>
-
-        <div class="download-section">
-            <div class="tool-icon">🧹</div>
-            <div class="performance-badge">RAM CLEAN</div>
-            <h2>Clear RAM</h2>
-            <a href="https://memreduct.org/files/memreduct-3.5.1-setup.exe">
-                ดาวน์โหลดเครื่องมือล้าง RAM
-            </a>
-        </div>
-
-        <footer>
-            <p style="color: #ff4d4d; text-align: center; opacity: 0.7;">
-                คำเตือน: โปรดระมัดระวังในการดาวน์โหลดและใช้งานสคริปต์
-                ควรสำรองข้อมูลก่อนใช้งานเสมอ
-            </p>
-        </footer>
     </div>
+
+    <footer>
+        <p>© 2025 ห้างหุ้นส่วนจำกัด ส.สเตนเลส แอนด์ พาร์ท</p>
+        <p>โรงงานผลิตสแตนเลสคุณภาพสูง | สมุทรปราการ</p>
+    </footer>
 </body>
 </html>
