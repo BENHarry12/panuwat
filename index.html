@@ -3,117 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ส.สแตนเลส - งานโลหะครบวงจร</title>
+    <title>ส.สแสตเลส - งานโลหะครบวงจร</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
-        
         body {
             font-family: 'Prompt', sans-serif;
             background-color: #f3f4f6;
         }
-
-        .slide-in {
-            animation: slideIn 1s ease-out;
+        .tab-content {
+            display: none;
         }
-
-        @keyframes slideIn {
+        .tab-content.active {
+            display: block;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(126, 34, 206, 0.9);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            z-index: 1000;
+            animation: popupAnimation 0.5s ease-out;
+        }
+        @keyframes popupAnimation {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translate(-50%, -50%) scale(0.7);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate(-50%, -50%) scale(1);
             }
         }
     </style>
 </head>
 <body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <header class="text-center bg-gradient-to-r from-purple-600 to-purple-800 text-white p-8 rounded-lg shadow-lg slide-in">
-            <h1 class="text-4xl font-bold mb-4">🛠️ ส.แสตเลส: จบทุกงานโลหะ ครบในที่เดียว! 🛠️</h1>
-            <p class="text-xl">มืออาชีพในงานม้วน ดัด พับ เชื่อมสแตนเลสและเหล็ก</p>
-        </header>
-
-        <section class="mt-8 bg-white p-6 rounded-lg shadow-md slide-in">
-            <h2 class="text-2xl font-semibold text-purple-700 mb-4">บริการของเรา</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-purple-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-purple-800">✅ งานม้วนเนียนกริ๊บ</h3>
-                    <p>การม้วนโลหะด้วยความแม่นยำและคุณภาพสูง</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-purple-800">✅ งานดัดได้รูปทรง</h3>
-                    <p>การดัดโลหะตามแบบและความต้องการเฉพาะ</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-purple-800">✅ งานพับแม่นยำ</h3>
-                    <p>เทคนิคการพับโลหะด้วยความประณีต</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-purple-800">✅ งานเชื่อมแข็งแรง</h3>
-                    <p>การเชื่อมที่มีคุณภาพ แข็งแรง น่าเชื่อถือ</p>
-                </div>
-            </div>
-        </section>
-      
-
-        <section class="mt-8 bg-white p-6 rounded-lg shadow-md slide-in">
-            <h2 class="text-2xl font-semibold text-purple-700 mb-4">ติดต่อเรา</h2>
-            <div class="grid md:grid-cols-3 gap-4 text-center">
-                <div>
-                    <i class="fas fa-phone text-purple-600 text-3xl"></i>
-                    <h3 class="font-bold">โทร</h3>
-                    <p>089-697-1068</p>
-                </div>
-                <div>
-                    <i class="fas fa-envelope text-purple-600 text-3xl"></i>
-                    <h3 class="font-bold">Line</h3>
-                    <p>0896971068</p>
-                </div>
-                <div>
-                    <i class="fas fa-map-marker-alt text-purple-600 text-3xl"></i>
-                    <h3 class="font-bold">พื้นที่</h3>
-                    <p>สมุทรปราการ, ประเทศไทย</p>
-                </div>
-            </div>
-        </section>
-      
-
-        <section class="mt-8 slide-in">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-purple-700 mb-4">วีดีโอแนะนำบริการ</h2>
-                <div class="aspect-w-16 aspect-h-9">
-                    <iframe 
-                        src="https://www.youtube.com/embed/fCfBP0hatsg" 
-                        title="ส.สแตนเลส บริการ" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="w-full h-96 rounded-lg"
-                    ></iframe>
-                </div>
-            </div>
-        </section>
-         
-          <div class="map-section">
-            <h2>เกี่ยวกับเรา</h2>
-            <p>บริษัทของเราตั้งอยู่ในพื้นที่อุตสาหกรรมสมุทรปราการ ให้บริการผลิตสแตนเลสคุณภาพสูง</p>
-            
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.2326609310594!2d100.69167687465933!3d13.562482888982755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d596b8bf640c7%3A0x449f2e5925ac2ae0!2z4Lie4Lij4Lih4LiH4Liy4Lia4Liy4Lij4LmA4Liq4Li44LiZ4LmC4Lil4Li04Lio4Liy4Liq4LiV4Lij4LmMIOC4oeC4q-C4geC4seC4lcOgIOC4oeC4q-C4geC4seC4lcOgIFBhcnQ!5e0!3m2!1sth!2sth!4v1710227856135!5m2!1sth!2sth" 
-                class="google-map" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-        <footer class="mt-8 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-center p-4 rounded-lg">
-            <p>© 2025 ส.สแสตเลส - งานโลหะครบวงจร</p>
-            <p>#งานโลหะ #สแตนเลส #เหล็ก #ครบวงจร</p>
-        </footer>
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <h2 class="text-3xl font-bold mb-4">ส.สแสตเลส</h2>
+        <p class="text-xl">งานโลหะคุณภาพ ครบวงจร!</p>
+        <button onclick="closePopup()" class="mt-4 bg-white text-purple-700 px-4 py-2 rounded-full">ปิด</button>
     </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <div class="container mx-auto px-4 py-8">
+        <!-- Tabs Navigation -->
+        <div class="flex justify-center mb-6 bg-purple-100 rounded-full p-2">
+            <button onclick="switchTab(0)" class="px-4 py-2 mx-2 rounded-full bg-purple-600 text-white">หน้าหลัก</button>
+            <button onclick="switchTab(1)" class="px-4 py-2 mx-2 rounded-full text-purple-600 hover:bg-purple-200">ติดต่อ</button>
+            <button onclick="switchTab(2)" class="px-4 py-2 mx-2 rounded-full text-purple-600 hover:bg-purple-200">วีดีโอ</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tab0" class="tab-content active">
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <h1 class="text-4xl font-bold text-purple-800 mb-4">🛠️ ส.แสตเลส: จบทุกงานโลหะ!</h1>
+                <p class="text-xl text-gray-700 mb-6">
+                    มองหางานม้วน ดัด พับ เชื่อม สแตนเลสและเหล็กคุณภาพ? ที่ ส.แสตเลส เราพร้อมให้บริการครบวงจร!
+                </p>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-purple-50 p-4 rounded-lg">✅ งานม้วนเนียนกริ๊บ</div>
+                    <div class="bg-purple-50 p-4 rounded-lg">✅ งานดัดได้รูปทรง</div>
+                    <div class="bg-purple-50 p-4 rounded-lg">✅ งานพับแม่นยำ</div>
+                </div>
+                <div class="mt-6">
+                    <a href="tel:0896971068" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700">
+                        📞 ติดต่อ 089-697-1068
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab1" class="tab-content">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-purple-800 mb-6">ติดต่อเรา</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold">โทร</h3>
+                        <p>089-697-1068</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Line</h3>
+                        <p>0896971068</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.2326609310594!2d100.69167687465933!3d13.562482888982755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d596b8bf640c7%3A0x449f2e5925ac2ae0!2z4Lie4Lij4Lih4LiH4Liy4Lia4Liy4Lij4LmA4Liq4Li44LiZ4LmC4Lil4Li04Lio4Liy4Liq4LiV4Lij4LmMIOC4oeC4q-C4geC4seC4lcOgIOC4oeC4q-C4geC4seC4lcOgIFBhcnQ!5e0!3m2!1sth!2sth!4v1710227856135!5m2!1sth!2sth" 
+                        class="w-full h-64 rounded-lg"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-purple-800 mb-6">วีดีโอแนะนำบริการ</h2>
+                <iframe 
+                    src="https://www.youtube.com/embed/fCfBP0hatsg" 
+                    class="w-full h-96 rounded-lg"
+                    title="ส.สแสตเลส บริการ" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabIndex) {
+            // Hide all tabs
+            document.getElementById('tab0').classList.remove('active');
+            document.getElementById('tab1').classList.remove('active');
+            document.getElementById('tab2').classList.remove('active');
+
+            // Show selected tab
+            document.getElementById('tab' + tabIndex).classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Auto-close popup after 3 seconds
+        setTimeout(closePopup, 3000);
+    </script>
 </body>
 </html>
